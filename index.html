@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amigo Secreto Família Rodrigues</title>
+<link rel="icon" type="image/png" href="imagens/favicon.png">
+<link rel="apple-touch-icon" href="imagens/icone.png">
+<meta name="theme-color" content="#0b2a20">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#071a14;--card:#fbf6ec;--ink:#1d2a24;--muted:#6b7a72;--red:#c0282b;--red2:#981d20;--gold:#e2b55a;--line:#e6dccb;--soft:#f3ecdd}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);min-height:100vh;overflow-x:hidden;
+  background:radial-gradient(900px 500px at 50% 0%,#1c4d3b 0%,transparent 70%),linear-gradient(180deg,#0b2a20 0%,#071a14 55%,#06140f 100%) fixed}
+
+/* céu, neve, luzes */
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.star-dot{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:.9}}
+#snow{position:fixed;inset:0;pointer-events:none;z-index:3}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:6}
+.lights{position:fixed;top:0;left:0;right:0;height:60px;z-index:4;pointer-events:none}
+.bulb{animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1;filter:drop-shadow(0 0 6px currentColor)}50%{opacity:.35;filter:none}}
+body.party .bulb{animation-duration:.35s}
+.hills{position:fixed;left:0;right:0;bottom:0;height:150px;z-index:1;pointer-events:none}
+.hills svg{width:100%;height:100%;display:block}
+
+main{position:relative;z-index:2;max-width:720px;margin:0 auto;padding:70px 20px 170px}
+
+/* cabeçalho */
+header{text-align:center;color:#fff;margin-bottom:26px}
+.tree{width:150px;height:180px;display:block;margin:0 auto 6px;overflow:visible}
+.tree .sway{transform-origin:100px 220px;animation:sway 5s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+.tree .topstar{transform-origin:100px 24px;animation:spinstar 6s linear infinite}
+@keyframes spinstar{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.15)}100%{transform:rotate(360deg) scale(1)}}
+.tree .halo{animation:halo 2s ease-in-out infinite;transform-origin:100px 24px}
+@keyframes halo{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.25)}}
+.tree .orn{animation:blink 1.8s ease-in-out infinite}
+body.party .tree .orn{animation-duration:.3s}
+.kicker{font-family:'Great Vibes',cursive;font-size:clamp(32px,6vw,44px);color:var(--gold);line-height:1;text-shadow:0 2px 18px rgba(226,181,90,.35)}
+h1{font-family:Fraunces,serif;font-size:clamp(38px,8vw,64px);line-height:1.02;font-weight:800;letter-spacing:-.01em;margin-top:4px;
+  background:linear-gradient(100deg,#fff 0%,#fff 38%,#f6d98e 48%,#fff 58%,#fff 100%);background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4.5s linear infinite}
+@keyframes shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+header p{color:rgba(255,255,255,.78);margin-top:12px;font-size:16px}
+.count{display:inline-flex;gap:8px;align-items:center;margin-top:16px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:14px;backdrop-filter:blur(4px)}
+.count b{color:var(--gold);font-size:18px;font-family:Fraunces,serif}
+
+/* cartões */
+.card{background:var(--card);border-radius:22px;padding:28px;box-shadow:0 24px 70px rgba(0,0,0,.45);margin-bottom:20px;position:relative;animation:rise .7s ease both}
+.card::before{content:"";position:absolute;inset:0;border-radius:22px;padding:2px;background:linear-gradient(135deg,var(--gold),transparent 35%,transparent 65%,var(--red));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.tabs{display:flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:4px;margin:0 auto 22px;max-width:420px;backdrop-filter:blur(4px)}
+.tab{flex:1;border:0;background:none;color:#fff;font:600 14px Inter,sans-serif;padding:11px;border-radius:999px;cursor:pointer;transition:.2s}
+.tab.on{background:var(--card);color:var(--ink)}
+h2{font-family:Fraunces,serif;font-size:25px;margin-bottom:6px}
+.sub{color:var(--muted);font-size:14px;line-height:1.5}
+label{display:block;font-size:13px;font-weight:600;margin:18px 0 6px}
+label small{font-weight:400;color:var(--muted)}
+input,textarea{width:100%;font:15px Inter,sans-serif;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);outline:none;transition:.15s}
+input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(226,181,90,.25)}
+textarea{resize:vertical;min-height:150px;line-height:1.55}
+textarea.short{min-height:80px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 15px Inter,sans-serif;padding:14px 22px;border-radius:12px;background:var(--red);color:#fff;transition:.15s;text-decoration:none}
+.btn:hover{background:var(--red2);transform:translateY(-1px)}
+.btn.block{width:100%;margin-top:22px}
+.btn.big{font-size:17px;padding:17px 26px;border-radius:14px;box-shadow:0 10px 30px rgba(192,40,43,.4);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 10px 30px rgba(192,40,43,.35)}50%{box-shadow:0 10px 40px rgba(192,40,43,.7)}}
+.btn.big::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:sweep 2.6s ease-in-out infinite}
+@keyframes sweep{0%{left:-60%}60%,100%{left:130%}}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{background:var(--soft)}
+.btn.sm{padding:9px 13px;font-size:13px;border-radius:10px}
+.btn.wa{background:#1f8f4e}.btn.wa:hover{background:#17733e}
+.err{color:var(--red);font-size:14px;margin-top:14px;display:none;line-height:1.45}
+.note{font-size:13px;color:var(--muted);background:var(--soft);border-radius:12px;padding:12px 14px;margin-top:12px;line-height:1.5}
+.note b{color:var(--ink)}
+.list{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.item{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff;transition:.25s;animation:rise .5s ease both}
+.item .nm{flex:1;font-weight:600;min-width:120px}
+.item .nm small{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-top:2px}
+.item.sent{background:#f1f7f1;border-color:#cfe5d3}
+.item.sent .nm small{color:#1f8f4e;font-weight:600}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hidden{display:none!important}
+
+/* revelação */
+.reveal{text-align:center;padding:34px 26px}
+.gift{width:140px;height:150px;margin:0 auto 10px;display:block;overflow:visible}
+.gift .lid{transform-origin:60px 50px;transition:transform .8s cubic-bezier(.3,1.6,.5,1)}
+.gift.idle{animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.gift.shake{animation:shake .35s ease-in-out infinite}
+@keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+.gift.open .lid{transform:translate(-26px,-46px) rotate(-28deg)}
+.gift .rays{opacity:0;transform-origin:60px 60px;transition:opacity .4s}
+.gift.open .rays{opacity:1;animation:rays 6s linear infinite}
+@keyframes rays{to{transform:rotate(360deg)}}
+.hello{font-family:Fraunces,serif;font-size:32px;font-weight:700}
+.label{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:20px}
+.slot{font-family:Fraunces,serif;font-size:clamp(36px,9vw,58px);font-weight:800;min-height:72px;margin:6px 0 4px;color:var(--red);line-height:1.2}
+.slot.spin{color:#9aa59f;filter:blur(.6px)}
+.slot.won{animation:won .7s cubic-bezier(.3,1.7,.5,1)}
+@keyframes won{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+.info{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+.pill{background:var(--soft);border-radius:999px;padding:8px 14px;font-size:14px}
+.msg{margin-top:16px;font-size:15px;font-style:italic;line-height:1.5}
+.secret{margin-top:20px;font-size:14px;color:var(--muted)}
+.fade{animation:rise .6s ease both}
+.codein{font-family:Fraunces,serif;font-size:40px;font-weight:700;text-align:center;letter-spacing:.35em;padding:14px 10px 14px 24px;margin-top:18px}
+.step{display:flex;gap:14px;align-items:flex-start;margin-top:18px}
+.step .num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px}
+.step > div{flex:1}
+.step p{font-size:14px;color:var(--muted);margin:4px 0 10px;line-height:1.5}
+.step a{color:var(--red2);font-weight:600}
+.cod{font-family:Fraunces,serif;letter-spacing:.08em;color:var(--ink)}
+#naoSou a{color:var(--red2)}
+.curto{margin-top:20px;border:1px dashed var(--line);border-radius:14px;padding:12px 14px;background:#fff}
+.curto summary{cursor:pointer;font-weight:600;font-size:14px}
+.curto summary small{font-weight:400;color:var(--muted)}
+.curto p{font-size:13px;color:var(--muted);line-height:1.5;margin:10px 0}
+.check{display:flex;gap:8px;align-items:center;font-weight:500;font-size:13px;margin:12px 0 2px}
+.check input{width:auto}
+.btn.off,.btn:disabled{opacity:.45;cursor:not-allowed}
+.step.done .num{background:#1f8f4e}
+.step.done .num{font-size:0}.step.done .num::after{content:"✓";font-size:15px}
+.aviso{margin-top:16px;background:#fff4e0;border:1px solid #f1d39a;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5;color:#5b4a2a}
+.prog{display:flex;align-items:center;gap:12px;margin-top:18px;font-size:14px;font-weight:600}
+.prog .bar{flex:1;height:10px;border-radius:999px;background:var(--soft);overflow:hidden}
+.prog .bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--gold));transition:width .5s}
+.mais{margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+.mais summary{cursor:pointer;font-weight:600;font-size:15px}
+.mais summary small{font-weight:400;color:var(--muted);font-size:13px}
+.item .btn.wa{font-size:15px;padding:12px 16px}
+.btn.link,.btn.link:hover{background:none;transform:none;border:0;color:var(--muted);font:500 13px Inter,sans-serif;text-decoration:underline;cursor:pointer;padding:6px}
+footer{text-align:center;color:rgba(255,255,255,.55);font-size:12px;margin-top:8px;line-height:1.6;position:relative;z-index:2}
+
+@media(max-width:560px){.row{grid-template-columns:1fr}.card{padding:22px}.item{flex-wrap:wrap}.item .nm{flex-basis:100%}.tree{width:120px;height:146px}main{padding-top:60px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<svg class="lights" id="lights" aria-hidden="true"></svg>
+<canvas id="snow"></canvas>
+<canvas id="confetti"></canvas>
+<div class="hills" aria-hidden="true">
+  <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+    <g fill="#0f3b2b">
+      <polygon points="120,70 150,20 180,70"/><polygon points="110,95 150,40 190,95"/>
+      <polygon points="1260,60 1295,5 1330,60"/><polygon points="1248,90 1295,28 1342,90"/>
+      <polygon points="1340,80 1362,45 1384,80"/><polygon points="1334,100 1362,60 1390,100"/>
+      <polygon points="40,90 60,58 80,90"/><polygon points="34,108 60,72 86,108"/>
+    </g>
+    <path d="M0 95 C 240 55, 420 120, 720 90 S 1200 55, 1440 85 L1440 150 L0 150 Z" fill="#dfe9f2"/>
+    <path d="M0 120 C 300 95, 560 140, 860 115 S 1260 100, 1440 118 L1440 150 L0 150 Z" fill="#ffffff"/>
+  </svg>
+</div>
+
+<main>
+  <header>
+    <svg class="tree" viewBox="0 0 200 240" aria-hidden="true">
+      <defs>
+        <radialGradient id="glow"><stop offset="0" stop-color="#fff6c2"/><stop offset="1" stop-color="#ffd54a" stop-opacity="0"/></radialGradient>
+        <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#2a9a62"/><stop offset="1" stop-color="#16603c"/></linearGradient>
+      </defs>
+      <g class="sway">
+        <polygon points="100,34 148,98 52,98" fill="url(#g1)"/>
+        <polygon points="100,62 164,146 36,146" fill="url(#g1)"/>
+        <polygon points="100,100 182,200 18,200" fill="url(#g1)"/>
+        <path d="M56 94 q44 -8 86 2 M44 140 q56 -12 114 2 M28 194 q72 -14 146 2" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".9"/>
+        <path d="M66 82 Q100 98 132 76 M52 128 Q100 150 150 120 M36 180 Q100 206 166 170" stroke="#e2b55a" stroke-width="2.5" fill="none" stroke-dasharray="1 6" stroke-linecap="round"/>
+        <g>
+          <circle class="orn" cx="82" cy="86" r="5" fill="#ff4d4d" color="#ff4d4d"/>
+          <circle class="orn" cx="118" cy="80" r="5" fill="#ffd54a" color="#ffd54a" style="animation-delay:.4s"/>
+          <circle class="orn" cx="70" cy="132" r="5.5" fill="#5ec8ff" color="#5ec8ff" style="animation-delay:.8s"/>
+          <circle class="orn" cx="104" cy="138" r="5.5" fill="#ff4d4d" color="#ff4d4d" style="animation-delay:.2s"/>
+          <circle class="orn" cx="138" cy="126" r="5.5" fill="#ffd54a" color="#ffd54a" style="animation-delay:1s"/>
+          <circle class="orn" cx="52" cy="182" r="6" fill="#ffd54a" color="#ffd54a" style="animation-delay:.6s"/>
+          <circle class="orn" cx="88" cy="190" r="6" fill="#ff4d4d" color="#ff4d4d" style="animation-delay:1.2s"/>
+          <circle class="orn" cx="124" cy="186" r="6" fill="#5ec8ff" color="#5ec8ff" style="animation-delay:.3s"/>
+          <circle class="orn" cx="156" cy="176" r="6" fill="#ff4d4d" color="#ff4d4d" style="animation-delay:.9s"/>
+        </g>
+      </g>
+      <rect x="88" y="200" width="24" height="24" rx="3" fill="#6b3f22"/>
+      <rect x="40" y="214" width="30" height="22" rx="3" fill="#c0282b"/><rect x="52" y="214" width="6" height="22" fill="#e2b55a"/>
+      <rect x="128" y="218" width="34" height="18" rx="3" fill="#e2b55a"/><rect x="142" y="218" width="6" height="18" fill="#c0282b"/>
+      <circle class="halo" cx="100" cy="24" r="26" fill="url(#glow)"/>
+      <polygon class="topstar" points="100,8 105,19 117,20 108,28 111,40 100,33 89,40 92,28 83,20 95,19" fill="#ffd54a"/>
+    </svg>
+    <div class="kicker">Amigo Secreto</div>
+    <h1 id="titulo">Família Rodrigues</h1>
+    <p id="subtitulo">Cada um recebe no WhatsApp quem tirou.</p>
+    <div class="count" id="count"></div>
+  </header>
+
+  <section id="home">
+    <div class="card" id="form">
+      <h2>Sorteio pelo WhatsApp</h2>
+      <p class="sub">Escreva os nomes, aperte <b>Sortear</b> e mande para cada um. A pessoa só precisa ler a mensagem.</p>
+
+      <label for="nomes">Nomes <small>— um por linha</small></label>
+      <textarea id="nomes" placeholder="Vó Maria&#10;Tio Carlos&#10;Ana&#10;João"></textarea>
+      <div class="sub" id="contagem" style="margin-top:6px;font-size:13px">0 participantes</div>
+
+      <button class="btn block big" id="btnGerar">🎁 Sortear</button>
+      <div class="err" id="errOrg"></div>
+
+      <details class="mais">
+        <summary>Mais opções <small>(data, local, casais, WhatsApp de cada um)</small></summary>
+        <label for="evento">Nome do amigo secreto</label>
+        <input id="evento" value="Amigo Secreto Família Rodrigues">
+        <div class="row">
+          <div>
+            <label for="data">Data da troca</label>
+            <input id="data" type="date">
+          </div>
+          <div>
+            <label for="local">Local da troca</label>
+            <input id="local" placeholder="Ex.: Casa da Vó Maria">
+          </div>
+        </div>
+        <label for="restr">Casais que não podem se tirar</label>
+        <textarea id="restr" class="short" placeholder="Ana x João&#10;Pedro x Carla"></textarea>
+        <label for="msg">Recado para todos</label>
+        <input id="msg" placeholder="Ex.: A troca será depois da ceia, às 22h!">
+        <div class="note">Dica: se colocar o WhatsApp do lado do nome (ex.: <b>Ana - 41 99999-9999</b>), o botão já abre a conversa da pessoa. Para quem mora fora, use <b>+</b> e o código do país.</div>
+      </details>
+    </div>
+
+    <div class="card hidden" id="resultado">
+      <h2>Pronto, sorteado!</h2>
+      <p class="sub">Aperte o botão verde de cada pessoa. Quando o WhatsApp abrir, <b>é só tocar em enviar</b>.</p>
+      <div class="prog"><div class="bar"><span id="barra"></span></div><span id="progTxt">0 de 0 enviados</span></div>
+      <div class="list" id="lista"></div>
+      <div class="actions">
+        <button class="btn ghost sm" id="btnRefazer">Sortear de novo</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>Feito com carinho para a Família Rodrigues. O resultado vai direto para o WhatsApp de cada um.</footer>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const guardar = { ler(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, gravar(k,v){ try { localStorage.setItem(k,v); } catch(e){} }, apagar(k){ try { localStorage.removeItem(k); } catch(e){} } };
+
+function rnd(n){ const a = new Uint32Array(1); crypto.getRandomValues(a); return a[0] % n; }
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=rnd(i+1); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function fmtDate(d){ if(!d) return ''; const [y,m,da]=d.split('-'); return `${da}/${m}/${y}`; }
+function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+async function copiar(txt){
+  try { await navigator.clipboard.writeText(txt); return true; }
+  catch(e){
+    const t=document.createElement('textarea'); t.value=txt; t.style.position='fixed'; t.style.opacity='0';
+    document.body.appendChild(t); t.select(); let ok=false; try{ ok=document.execCommand('copy'); }catch(_){}
+    t.remove(); return ok;
+  }
+}
+function flash(btn, txt){ const o=btn.textContent; btn.textContent=txt; setTimeout(()=>btn.textContent=o,1600); }
+function diasAte(iso){
+  const [y,m,d] = iso.split('-').map(Number);
+  const alvo = new Date(y, m-1, d); const hoje = new Date(); hoje.setHours(0,0,0,0);
+  return Math.round((alvo - hoje) / 86400000);
+}
+function contagem(iso, rotulo){
+  const el = $('#count');
+  if (!iso){ el.classList.add('hidden'); return; }
+  const n = diasAte(iso);
+  el.classList.remove('hidden');
+  if (n > 1) el.innerHTML = `Faltam <b>${n}</b> dias para ${rotulo}`;
+  else if (n === 1) el.innerHTML = `<b>Amanhã</b> é ${rotulo.replace(/^o |^a /,'')}!`;
+  else if (n === 0) el.innerHTML = `<b>Hoje</b> é dia de ${rotulo.replace(/^o |^a /,'')}!`;
+  else el.classList.add('hidden');
+}
+function natalISO(){ const h=new Date(); let y=h.getFullYear(); if (h.getMonth()===11 && h.getDate()>25) y++; return `${y}-12-25`; }
+function titulo(e){ const resto = e.replace(/^amigo\s+secreto\s*(da|de|do|-|–)?\s*/i,'').trim(); return resto || e; }
+
+(function(){
+  const box = $('#stars');
+  for (let i=0;i<70;i++){
+    const s = document.createElement('div'); s.className='star-dot';
+    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*60}%;animation-delay:-${Math.random()*3}s;animation-duration:${2+Math.random()*3}s;transform:scale(${.6+Math.random()})`;
+    box.appendChild(s);
+  }
+})();
+
+function montarLuzes(){
+  const svg = $('#lights'); const w = innerWidth; const passo = w < 560 ? 56 : 72;
+  const cores = ['#ff4d4d','#ffd54a','#4ee08a','#5ec8ff','#ff8ad8'];
+  svg.setAttribute('viewBox', `0 0 ${w} 60`);
+  let fio = '', bulbos = '';
+  for (let x=0, i=0; x<w+passo; x+=passo, i++){
+    const meio = x + passo/2;
+    fio += `M${x} 4 Q${meio} 34 ${x+passo} 4 `;
+    const cor = cores[i % cores.length];
+    bulbos += `<g transform="translate(${meio} 19)"><rect x="-3" y="-2" width="6" height="6" rx="1" fill="#2b3a33"/>
+      <ellipse class="bulb" cx="0" cy="12" rx="5.5" ry="9" fill="${cor}" color="${cor}" style="animation-delay:${(i%5)*.3}s"/></g>`;
+  }
+  svg.innerHTML = `<path d="${fio}" stroke="#2b3a33" stroke-width="2" fill="none"/>${bulbos}`;
+}
+montarLuzes(); addEventListener('resize', montarLuzes);
+
+const neve = (function(){
+  const c = $('#snow'), x = c.getContext('2d');
+  let flocos = [], W, H, t = 0;
+  function tam(){ W = c.width = innerWidth; H = c.height = innerHeight; }
+  function novo(topo){ const r = Math.random()*2.6 + .8; return { x: Math.random()*W, y: topo ? -10 : Math.random()*H, r, vy: r*.35 + .25, f: Math.random()*Math.PI*2, a: .45 + Math.random()*.5 }; }
+  tam(); for (let i=0;i<(innerWidth < 560 ? 90 : 160);i++) flocos.push(novo(false));
+  addEventListener('resize', tam);
+  function frame(){
+    t += .01; x.clearRect(0,0,W,H);
+    const vento = Math.sin(t) * .6;
+    for (const p of flocos){
+      p.y += p.vy; p.f += .02; p.x += Math.sin(p.f) * .4 + vento * (p.r/3);
+      if (p.y > H + 5){ Object.assign(p, novo(true)); }
+      if (p.x > W + 5) p.x = -5; if (p.x < -5) p.x = W + 5;
+      x.beginPath(); x.arc(p.x, p.y, p.r, 0, Math.PI*2); x.fillStyle = `rgba(255,255,255,${p.a})`; x.fill();
+    }
+    if (flocos.length > 400) flocos.splice(0, flocos.length - 400);
+    requestAnimationFrame(frame);
+  }
+  if (!reduz) frame();
+  return { rajada(){ for (let i=0;i<120;i++){ const p = novo(true); p.y = -Math.random()*200; flocos.push(p); } } };
+})();
+
+function lerPessoas(){
+  return $('#nomes').value.split('\n').map(s=>s.trim()).filter(Boolean).map(linha => {
+    const m = linha.match(/^(.*?)[\s,;:\-–]+(\+?[\d\s().-]{8,})$/);
+    if (!m) return { nome: linha, tel: '' };
+    const nome = m[1].trim(), bruto = m[2].trim();
+    let dig = bruto.replace(/\D/g,'');
+    if (!bruto.startsWith('+')){
+      dig = dig.replace(/^0+/,'');
+      if (dig.length === 10 || dig.length === 11) dig = '55' + dig;
+    }
+    return { nome: nome || linha, tel: dig };
+  });
+}
+$('#nomes').addEventListener('input',()=>{ const n=lerPessoas().length; $('#contagem').textContent = n + (n===1?' participante':' participantes'); });
+$('#data').addEventListener('change', e => contagem(e.target.value || natalISO(), e.target.value ? 'a troca de presentes' : 'o Natal'));
+$('#evento').addEventListener('input', e => { $('#titulo').textContent = titulo(e.target.value.trim() || 'Amigo Secreto Família Rodrigues'); });
+
+function sortear(n, proib){
+  for(let t=0;t<20000;t++){
+    const p = shuffle([...Array(n).keys()]);
+    let ok = true;
+    for(let i=0;i<n;i++){ if(p[i]===i || proib.has(i+'-'+p[i])){ ok=false; break; } }
+    if(ok) return p;
+  }
+  return null;
+}
+
+let estado = null;
+const VAZIO = '⠀';
+
+function mensagem(i){
+  const ev = estado.ev, eu = estado.pessoas[i], tirou = estado.pessoas[estado.p[i]].nome;
+  let txt = `🎄 *${ev.e}*\n\nOi, ${eu.nome}! Seu amigo secreto está aqui embaixo 👇`;
+  txt += ('\n' + VAZIO).repeat(12);
+  txt += `\nVocê tirou:\n\n🎁 *${tirou.toUpperCase()}* 🎁\n\nÉ segredo, não conta pra ninguém! 🤫`;
+  const extra = [];
+  if (ev.d) extra.push(`📅 ${fmtDate(ev.d)}`);
+  if (ev.l) extra.push(`📍 ${ev.l}`);
+  if (extra.length) txt += `\n\n${extra.join('\n')}`;
+  if (ev.m) txt += `\n\n${ev.m}`;
+  return txt;
+}
+function linkWa(i){
+  const tel = estado.pessoas[i].tel;
+  return `https://wa.me/${tel || ''}?text=${encodeURIComponent(mensagem(i))}`;
+}
+function salvar(){ guardar.gravar('as_wa', JSON.stringify(estado)); }
+
+function progresso(){
+  const tot = estado.pessoas.length, env = estado.enviado.filter(Boolean).length;
+  $('#progTxt').textContent = env === tot ? `Todos os ${tot} enviados! 🎉` : `${env} de ${tot} enviados`;
+  $('#barra').style.width = (env / tot * 100) + '%';
+}
+
+function mostrarResultado(){
+  $('#titulo').textContent = titulo(estado.ev.e);
+  document.title = estado.ev.e;
+  contagem(estado.ev.d || natalISO(), estado.ev.d ? 'a troca de presentes' : 'o Natal');
+  const lista = $('#lista'); lista.innerHTML = '';
+  estado.pessoas.forEach((pp, i)=>{
+    const it = document.createElement('div'); it.className = 'item' + (estado.enviado[i] ? ' sent' : ''); it.style.animationDelay = (i*60)+'ms';
+    const status = () => estado.enviado[i] ? 'Enviado ✓' : (pp.tel ? 'Abre direto na conversa' : 'Você escolhe o contato');
+    it.innerHTML = `<div class="nm">${esc(pp.nome)}<small>${esc(status())}</small></div>
+      <a class="btn wa" target="_blank" rel="noopener" href="${linkWa(i)}">Mandar no WhatsApp</a>
+      <button class="btn link">copiar</button>`;
+    const marcar = () => { estado.enviado[i] = true; it.classList.add('sent'); it.querySelector('small').textContent = status(); salvar(); progresso(); if (estado.enviado.every(Boolean)) neve.rajada(); };
+    it.querySelector('button').onclick = async ev => { await copiar(mensagem(i)); flash(ev.target,'copiado!'); marcar(); };
+    it.querySelector('a').addEventListener('click', marcar);
+    lista.appendChild(it);
+  });
+  progresso();
+  $('#form').classList.add('hidden');
+  $('#resultado').classList.remove('hidden');
+}
+
+$('#btnGerar').onclick = () => {
+  const err = $('#errOrg'); err.style.display='none';
+  const fail = m => { err.textContent = m; err.style.display = 'block'; };
+  const pessoas = lerPessoas();
+  if (pessoas.length < 3) return fail('Coloque pelo menos 3 nomes, um em cada linha.');
+  const low = pessoas.map(p=>p.nome.toLowerCase());
+  const dupIdx = low.findIndex((n,i)=>low.indexOf(n)!==i);
+  if (dupIdx >= 0) return fail(`O nome "${pessoas[dupIdx].nome}" aparece duas vezes. Diferencie, por exemplo "Ana Paula" e "Ana Clara".`);
+  const curto = pessoas.find(p => p.tel && p.tel.length < 10);
+  if (curto) return fail(`O número de "${curto.nome}" parece incompleto. Coloque com DDD (ou com + e o código do país).`);
+
+  const proib = new Set();
+  for (const linha of $('#restr').value.split('\n').map(s=>s.trim()).filter(Boolean)){
+    const partes = linha.split(/\s+x\s+|\s*[,;\/]\s*/i).map(s=>s.trim()).filter(Boolean);
+    if (partes.length < 2) return fail(`Não entendi a restrição "${linha}". Use o formato: Ana x João`);
+    const idx = [];
+    for (const p of partes){
+      const i = low.indexOf(p.toLowerCase());
+      if (i < 0) return fail(`"${p}" (em quem não pode tirar quem) não está na lista de participantes. Confira se está escrito igual.`);
+      idx.push(i);
+    }
+    for (const a of idx) for (const b of idx) if (a!==b) proib.add(a+'-'+b);
+  }
+
+  const p = sortear(pessoas.length, proib);
+  if (!p) return fail('Não deu para fazer um sorteio com essas restrições. Tente remover alguma.');
+
+  estado = {
+    ev: { e: $('#evento').value.trim() || 'Amigo Secreto Família Rodrigues', d: $('#data').value, l: $('#local').value.trim(), m: $('#msg').value.trim() },
+    pessoas, p, enviado: pessoas.map(()=>false)
+  };
+  salvar();
+  mostrarResultado();
+  neve.rajada();
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+
+$('#btnRefazer').onclick = () => {
+  if (!confirm('Sortear de novo? Quem já recebeu vai precisar receber a mensagem nova.')) return;
+  guardar.apagar('as_wa'); estado = null;
+  $('#resultado').classList.add('hidden'); $('#form').classList.remove('hidden');
+};
+
+contagem(natalISO(), 'o Natal');
+(function(){
+  const s = guardar.ler('as_wa');
+  if (!s) return;
+  try { estado = JSON.parse(s); mostrarResultado(); } catch(e){ guardar.apagar('as_wa'); }
+})();
+</script>
+</body>
+</html>

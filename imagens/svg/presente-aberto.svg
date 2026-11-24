@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25 -45 170 180" width="1020" height="1080">
+  <g fill="#ffd54a" opacity=".5"><polygon points="60,60 56,-10 64,-10" transform="rotate(0 60 60)" opacity=".35"/><polygon points="60,60 56,-10 64,-10" transform="rotate(30 60 60)" opacity=".35"/><polygon points="60,60 56,-10 64,-10" transform="rotate(60 60 60)" opacity=".35"/><polygon points="60,60 56,-10 64,-10" transform="rotate(90 60 60)" opacity=".35"/><polygon points="60,60 56,-10 64,-10" transform="rotate(120 60 60)" opacity=".35"/><polygon points="60,60 56,-10 64,-10" transform="rotate(150 60 60)" opacity=".35"/><polygon points="60,60 56,-10 64,-10" transform="rotate(180 60 60)" opacity=".35"/><polygon points="60,60 56,-10 64,-10" transform="rotate(210 60 60)" opacity=".35"/><polygon points="60,60 56,-10 64,-10" transform="rotate(240 60 60)" opacity=".35"/><polygon points="60,60 56,-10 64,-10" transform="rotate(270 60 60)" opacity=".35"/><polygon points="60,60 56,-10 64,-10" transform="rotate(300 60 60)" opacity=".35"/><polygon points="60,60 56,-10 64,-10" transform="rotate(330 60 60)" opacity=".35"/></g>
+  <rect x="18" y="62" width="84" height="60" rx="6" fill="#c0282b"/>
+  <rect x="54" y="62" width="12" height="60" fill="#e2b55a"/>
+  <g transform="translate(-26 -46) rotate(-28 60 50)">
+    <rect x="12" y="46" width="96" height="20" rx="5" fill="#d23a3c"/>
+    <rect x="54" y="46" width="12" height="20" fill="#e2b55a"/>
+    <path d="M60 46c-10-18-34-18-30-4 3 9 20 6 30 4zM60 46c10-18 34-18 30-4-3 9-20 6-30 4z" fill="none" stroke="#e2b55a" stroke-width="6" stroke-linejoin="round"/>
+  </g>
+</svg>

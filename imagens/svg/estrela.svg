@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="74 -2 52 52" width="512" height="512">
+  <defs><radialGradient id="glow"><stop offset="0" stop-color="#fff6c2"/><stop offset="1" stop-color="#ffd54a" stop-opacity="0"/></radialGradient></defs>
+  <circle cx="100" cy="24" r="26" fill="url(#glow)"/>
+  <polygon points="100,8 105,19 117,20 108,28 111,40 100,33 89,40 92,28 83,20 95,19" fill="#ffd54a"/>
+</svg>
